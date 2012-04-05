@@ -1,0 +1,11 @@
+CAT-Scheduling
+
+Code to manage volunteer hours for DeskCATs, including Front Desk
+and Kennel hours.
+
+  * (Phase 2: Expand to also track attendance for both volunteer
+      hours and Braindumps.)
+
+Utilizes a MySQL database to track these hours.
+
+== In Progress ==
