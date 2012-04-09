@@ -26,13 +26,16 @@ def main ():
     selection = raw_input("Select an Action: ")
 
     if(int(selection) == 1):
-      print("")
+      Avl_Query.Display_All_Avail(db_cursor)
+
     elif(int(selection) == 2):
-      day = raw_input("View all availability for which day? ")
+      day = raw_input("View all availability for which day?\n")
       Avl_Query.Display_Day_Avail(day, db_cursor)
 
     elif(int(selection) == 3):
-      print("")
+      deskcat = raw_input("View all availability for which Deskcat?\n")
+      Avl_Query.Display_DeskcatAvail_ByDay(deskcat, db_cursor)
+
     elif(int(selection) == 4):
       print("")
 
