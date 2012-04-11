@@ -20,6 +20,23 @@ def Display_DeskcatAvail_ByDay(deskcat, db_cursor):
   Display_Header()
   Generate_Output(data)
 
+def  No_Recent_Update(db_cursor):
+  print "  +===============+===============+"
+  print "  |   Deskcat     |   Last Update |"
+  print "  +===============+===============+"
+  db_cursor.execute("select distinct deskcat, last_updated from deskcat_availability where last_updated < date_sub(now(), interval 1 month)")
+  data = db_cursor.fetchall()
+  Generate_Output(data)
+
+def Display_Insufficient_Hours(db_cursor):
+  print "+=============+===========+"
+  print "|  Num Hours |   Deskcat  |"
+  print "+=============+===========+"
+  db_cursor.execute("SELECT COUNT(*), deskcat FROM deskcat_availability GROUP BY deskcat HAVING COUNT(*) < 8")
+  data = db_cursor.fetchall()
+  Generate_Output(data)
+
+
 
 #====================================================================================+
 # The following functions generate the final output resulting from the database query|

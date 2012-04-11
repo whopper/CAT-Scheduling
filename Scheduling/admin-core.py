@@ -12,7 +12,7 @@ def main ():
                         passwd="",db="availability")
   db_cursor = db.cursor()
 
-  while(int(selection) != 5):
+  while(int(selection) != 6):
     # To be replaced with fancy curses interface, says monleezy
     print("\n\n+======================================================+")
     print("|               Welcome, Herder of CATS                |")
@@ -20,7 +20,8 @@ def main ():
     print("|  2) Display All Availability for a Specific Day      |")
     print("|  3) Display All Availability for a Specific DeskCAT  |")
     print("|  4) Show DeskCATS with < 8 Hours of Availability     |")
-    print("|  5) Exit                                             |")
+    print("|  5) Show DeskCATS Who Haven't Updated Availability   |")
+    print("|  6) Exit                                             |")
     print("+======================================================+\n")
 
     selection = raw_input("Select an Action: ")
@@ -37,7 +38,10 @@ def main ():
       Avl_Query.Display_DeskcatAvail_ByDay(deskcat, db_cursor)
 
     elif(int(selection) == 4):
-      print("")
+      Avl_Query.Display_Insufficient_Hours(db_cursor)
+
+    elif(int(selection) == 5):
+      Avl_Query.No_Recent_Update(db_cursor)
 
 
 if __name__ == '__main__':
