@@ -12,7 +12,7 @@ def main ():
                         passwd="",db="availability")
   db_cursor = db.cursor()
 
-  while(int(selection) != 5):
+  while selection != "5":
     sub_selection = ""
     # To be replaced with fancy curses interface, says monleezy
     print("\n\n+======================================================+")
@@ -26,22 +26,25 @@ def main ():
 
     selection = raw_input("Select an Action: ")
 
-    if int(selection) == 1:
+    if selection == "\n":
+      print("Try again...\n")
+
+    if selection == "1":
       Avl_Query.Display_All_Avail(db_cursor)
 
-    elif int(selection) == 2:
+    elif selection == "2":
       while sub_selection != "back":
         sub_selection = raw_input("\nView all availability for which day? (\"back\" to return to menu)\n")
         if sub_selection != "back":
           Avl_Query.Display_Day_Avail(sub_selection, db_cursor)
 
-    elif int(selection) == 3:
+    elif selection == "3":
       while sub_selection != "back":
         sub_selection = raw_input("\nView all availability for which Deskcat? (\"back\" to return to menu)\n")
         if sub_selection != "back":
           Avl_Query.Display_DeskcatAvail_ByDay(sub_selection, db_cursor)
 
-    elif int(selection) == 4:
+    elif selection == "4":
       Avl_Query.No_Recent_Update(db_cursor)
 
 
